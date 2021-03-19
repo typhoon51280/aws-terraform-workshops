@@ -48,14 +48,14 @@ resource "aws_cloudwatch_metric_alarm" "cpu_high_alarm" {
   ]
 }
 
-/*
+
 resource "aws_cloudwatch_metric_alarm" "log_high_alarm" {
   alarm_name = "w2-alarm-cpu-low"
   alarm_description = "This alarm triggers when CPU load in Autoscaling group is low."
 
   metric_name = "CPUUtilization"
   namespace = "AWS/EC2"
-  dimensions {
+  dimensions = {
     AutoScalingGroupName = aws_autoscaling_group.autoscaling_group.name
   }
   statistic = "Average"
@@ -72,4 +72,3 @@ resource "aws_cloudwatch_metric_alarm" "log_high_alarm" {
     aws_autoscaling_policy.autoscale_group_policy_down_x1.arn
   ]
 }
-*/

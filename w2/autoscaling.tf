@@ -1,3 +1,13 @@
+# Get latest Amazon Linux 2 AMI
+data "aws_ami" "amazon_linux_2" {
+  most_recent = true
+  owners      = ["amazon"]
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
+}
+
 # Specify missing arguments according to documentation:
 # https://www.terraform.io/docs/providers/aws/r/launch_configuration.html
 resource "aws_launch_configuration" "launch_configuration" {
@@ -11,20 +21,9 @@ resource "aws_launch_configuration" "launch_configuration" {
   key_name = aws_key_pair.ec2_key.key_name
 }
 
-# Get latest Amazon Linux 2 AMI
-data "aws_ami" "amazon_linux_2" {
-  most_recent = true
-  owners      = ["amazon"]
-  filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm*"]
-  }
-}
-
 # Specify missing arguments according to documentation:
 # https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html
 resource "aws_autoscaling_group" "autoscaling_group" {
-  name = "w2-asg"
   min_size = 1
   max_size = 3
   launch_configuration = aws_launch_configuration.launch_configuration.name
@@ -33,7 +32,6 @@ resource "aws_autoscaling_group" "autoscaling_group" {
   # Keep below arguments
   # availability_zones = [ var.availability_zone_id ]
   vpc_zone_identifier = [ var.subnet_id ]
-  protect_from_scale_in = true
 
   tag {
     key = "Name"

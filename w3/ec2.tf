@@ -2,15 +2,15 @@
 #   which reside in this security group.
 #
 # Docs: https://www.terraform.io/docs/providers/aws/r/security_group.html
-resource "aws_security_group" "w3-security-group" {
-  description = "W3 security group."
+resource "aws_security_group" "workshop_security_group" {
+  description = "workshop security group"
 
   ingress {
     # Add here rule that allows incoming connections to
     # application running under docker via 80 port
 
-    from_port = 
-    to_port = 
+    from_port = 80
+    to_port = 80
     protocol = "tcp"
     cidr_blocks = [ "0.0.0.0/0" ]
   }
@@ -40,5 +40,5 @@ resource "aws_security_group" "w3-security-group" {
   }
 
   # Keep this argument as is:
-  vpc_id = "${var.vpc_id}"
+  vpc_id = var.vpc_id
 }
