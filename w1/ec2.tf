@@ -14,9 +14,9 @@ resource "aws_security_group" "w1_security_group" {
 
   description = "Test security group."
   vpc_id = ""
-  tags = merge(var.resource_tags, {
+  tags = {
     Name: "w1_security_group"
-  })
+  }
 }
 
 # To reference attributes of resources use syntax TYPE.NAME.ATTRIBUTE
@@ -64,7 +64,7 @@ resource "aws_instance" "w1_instance" {
   # 2. Specify VPC subnet ID
   # 3. Specify EC2 instance type.
   # 4. Specify Security group for this instance (use one that we create above).
-  # Docs: https://www.terraform.io/docs/providers/aws/r/instance.html
+  # Docs: https://www.terraform.iteo/docs/providers/aws/r/instance.html
 
   # subnet_id = ""
 
@@ -72,9 +72,9 @@ resource "aws_instance" "w1_instance" {
   vpc_security_group_ids = [aws_security_group.w1_security_group.id]
   associate_public_ip_address = true
   user_data = file("../shared/user-data.txt")
-  tags = merge(var.resource_tags, {
+  tags = {
     Name = "w1-instance"
-  })
+  }
   
   # Keep these arguments as is:
   ami = data.aws_ami.amazon_linux_2.id
@@ -92,12 +92,6 @@ data "aws_ami" "amazon_linux_2" {
   }
 }
 
-variable "resource_tags" {
-  description = "Tags to set for all resources"
-  type        = map(string)
-  default = {
-    workshop_name = "aws-terraform-base"
-    workshop_lab = "workshop1-ec2"
-    worshop_user = "vincenzo delloste"
-  }
+output "public_dns" {
+  value = aws_instance.w1_instance.public_dns
 }

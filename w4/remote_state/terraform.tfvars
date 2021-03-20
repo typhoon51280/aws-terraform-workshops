@@ -1,1 +1,1 @@
-s3_bucket_name = "w4-videlloste"
+s3_bucket_name = ""
