@@ -23,13 +23,3 @@ resource "aws_instance" "jenkins_ec2_instance" {
   key_name = aws_key_pair.ec2_key.key_name
   depends_on = [ aws_s3_bucket_object.jenkins_bootstrap_script ]
 }
-
-# Get latest Amazon Linux 2 AMI
-data "aws_ami" "amazon_linux_2" {
-  most_recent = true
-  owners      = ["amazon"]
-  filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm*"]
-  }
-}

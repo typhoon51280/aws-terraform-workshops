@@ -8,7 +8,11 @@ jenkins:
       users:
         - id: "${username}"
           password: "#jbcrypt:${password}"
-  authorizationStrategy: loggedInUsersCanDoAnything
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+  remotingSecurity:
+    enabled: true
 tool:
   git:
     installations:
@@ -27,11 +31,12 @@ jobs:
                 stages {
                   stage ('test') {
                     steps {
-                      echo "hello"
+                      echo "hello world"
                     }
                   }
                 }
               }""".stripIndent())
+              sandbox()
           }
         }
       }
