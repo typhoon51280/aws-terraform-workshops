@@ -1,0 +1,37 @@
+jenkins:
+  systemMessage: "Jenkins Workshop"
+  numExecutors: 1
+  mode: NORMAL
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "${username}"
+          password: "#jbcrypt:${password}"
+  authorizationStrategy: loggedInUsersCanDoAnything
+tool:
+  git:
+    installations:
+      - name: git
+        home: /bin/git
+jobs:
+  - script: >
+      folder('testjobs')
+  - script: >
+      pipelineJob('testjobs/demo') {
+        definition {
+          cps {
+            script("""\
+              pipeline {
+                agent any
+                stages {
+                  stage ('test') {
+                    steps {
+                      echo "hello"
+                    }
+                  }
+                }
+              }""".stripIndent())
+          }
+        }
+      }

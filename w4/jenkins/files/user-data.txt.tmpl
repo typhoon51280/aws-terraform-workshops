@@ -6,4 +6,8 @@ exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
 yum install aws-cli -y
 
 # Downloading bootstrap script and starting it
+mkdir -p /var/lib/jenkins
+aws s3 cp s3://${s3_bucket_name}/bootstrap-scripts/jenkins.yaml /var/lib/jenkins
+
+# Downloading bootstrap script and starting it
 aws s3 cp s3://${s3_bucket_name}/bootstrap-scripts/jenkins_bootstrap_script.sh /tmp && sh /tmp/jenkins_bootstrap_script.sh

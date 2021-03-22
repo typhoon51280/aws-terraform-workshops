@@ -17,3 +17,13 @@ variable "subnet_id" {
 variable "jenkins_bucket" {
   description = "S3 bucket name for Jenkins scripts"
 }
+
+variable "jenkins_username" {
+  description = "Jenkins Admin username"
+  default = "admin"
+}
+
+variable "jenkins_password" {
+  description = "Jenkins Admin password"
+  default = "password"
+}
