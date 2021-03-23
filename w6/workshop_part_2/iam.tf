@@ -1,14 +1,12 @@
-/*
-
 # Uncomment and add missing arguments here. Keep rest configuration as is.
 
 resource "aws_iam_instance_profile" "w6-instance-profile" {
-  name =
-  roles = ["${aws_iam_role.w6-role.name}"]
+  # name =
+  roles = [ aws_iam_role.w6-role.name ]
 }
 
 resource "aws_iam_role" "w6-role" {
-  name =
+  # name =
   assume_role_policy = <<EOF
 {
   "Version": "2008-10-17",
@@ -44,7 +42,7 @@ EOF
 
 resource "aws_iam_role_policy" "s3-policy" {
   name = "aws-limited-access"
-  role = "${aws_iam_role.w6-role.id}"
+  role = aws_iam_role.w6-role.id
   policy = <<EOF
 {
   "Statement": [{
@@ -60,5 +58,3 @@ resource "aws_iam_role_policy" "s3-policy" {
 }
 EOF
 }
-
-*/

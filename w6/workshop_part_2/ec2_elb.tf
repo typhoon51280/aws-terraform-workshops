@@ -1,10 +1,8 @@
-/*
-
 # Uncomment and add missing arguments here. Keep rest configuration as is.
 
 resource "aws_elb" "w6-elb" {
   name = ""
-  security_groups = [ "${aws_security_group.w6-sg.id}" ]
+  security_groups = [ aws_security_group.w6-sg.id ]
 
   listener {
     instance_port = 80
@@ -21,8 +19,6 @@ resource "aws_elb" "w6-elb" {
     interval = 5
   }
 
-  subnets = [ "${var.subnet_id}" ]
+  subnets = [ var.subnet_id ]
   internal = false
 }
-
-*/

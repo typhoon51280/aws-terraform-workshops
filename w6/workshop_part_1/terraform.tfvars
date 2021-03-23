@@ -1,3 +1,3 @@
-vpc_id = "vpc-1234567"
-subnet_id = "subnet-1234567"
-availability_zone_id = "us-east-1c"
+vpc_id = "vpc-07ca107e"
+subnet_id = "subnet-8b9682ed"
+availability_zone_id = "eu-west-1c"

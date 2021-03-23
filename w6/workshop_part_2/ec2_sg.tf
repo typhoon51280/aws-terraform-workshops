@@ -1,5 +1,3 @@
-/*
-
 # Uncomment and add missing arguments here (if necessary). Keep rest configuration as is.
 
 resource "aws_security_group" "w6-sg" {
@@ -35,7 +33,5 @@ resource "aws_security_group" "w6-sg" {
     cidr_blocks = [ "0.0.0.0/0" ]
   }
 
-  vpc_id = "${var.vpc_id}"
+  vpc_id = var.vpc_id
 }
-
-*/
