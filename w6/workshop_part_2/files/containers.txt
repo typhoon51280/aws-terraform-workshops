@@ -1,7 +1,7 @@
 [
    {
 	"name": "webservice",
-	"image": "anosulchik/workshop-sample-application:v1.0",
+	"image": "anosulchik/workshop-sample-application:v2.0",
 	"memory": 4096,
 	"portMappings": [{
 		"hostPort": 80,
