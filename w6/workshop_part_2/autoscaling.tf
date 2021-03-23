@@ -17,10 +17,9 @@ resource "aws_launch_configuration" "w6-lc" {
   iam_instance_profile = aws_iam_instance_profile.w6-instance-profile.id
   security_groups = [ aws_security_group.w6-sg.id ]
 
-  user_data = <<EOF
-"#!/bin/bash
-echo ECS_CLUSTER=${aws_ecs_cluster.w6-ecs-cluster.name} > /etc/ecs/ecs.config
-EOF
+  user_data = templatefile("files/user-data.txt.tmpl", {
+    cluster_name = aws_ecs_cluster.w6-ecs-cluster.name
+  })
 
   depends_on = [ aws_iam_instance_profile.w6-instance-profile ]
 
