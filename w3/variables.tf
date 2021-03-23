@@ -12,4 +12,5 @@ variable "subnet_id" {
 
 variable "ec2_tag_name" {
   description = "Tag Name for EC2 instances."
+  default = "workshop-3"
 }

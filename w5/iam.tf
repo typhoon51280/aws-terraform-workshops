@@ -1,11 +1,8 @@
-/*
-
 # IAM role that will be used by Lambda functions to communicate with AWS resources.
 
 # Specify missing or incomplete arguments according to documentation:
 # Docs: https://www.terraform.io/docs/providers/aws/r/iam_role.html
-resource "aws_iam_role" "" {
-  name =
+resource "aws_iam_role" "w5" {
   assume_role_policy = <<EOF
 {
   "Version": "2008-10-17",
@@ -23,9 +20,8 @@ resource "aws_iam_role" "" {
 EOF
 }
 
-resource "aws_iam_role_policy" "" {
-  name =
-  role =
+resource "aws_iam_role_policy" "w5" {
+  role = aws_iam_role.w5.name
   policy = <<EOF
 {
   "Statement": [
@@ -39,13 +35,25 @@ resource "aws_iam_role_policy" "" {
    {
      "Effect": "Allow",
      "Action": [
+       "sns:*"
+     ],
+     "Resource": "*"
+   },
+   {
+     "Effect": "Allow",
+     "Action": [
        "ec2:*"
      ],
      "Resource": "*"
+   },
+   {
+     "Effect": "Allow",
+     "Action": [
+       "events:*"
+     ],
+     "Resource": "arn:aws:events:*:*:*"
    }
   ]
 }
 EOF
 }
-
-*/

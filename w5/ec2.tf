@@ -1,6 +1,6 @@
 # Add missing arguments here if necessary.
 # Docs: https://www.terraform.io/docs/providers/aws/r/security_group.html
-resource "aws_security_group" "" {
+resource "aws_security_group" "w5" {
   description = "W5 security group."
 
   # This rule allows incoming connections via tcp/80
@@ -35,5 +35,5 @@ resource "aws_security_group" "" {
     cidr_blocks = [ "0.0.0.0/0" ]
   }
 
-  vpc_id = "${var.vpc_id}"
+  vpc_id = var.vpc_id
 }
