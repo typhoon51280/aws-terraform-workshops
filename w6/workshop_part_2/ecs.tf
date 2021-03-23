@@ -1,6 +1,6 @@
 # Docs: https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html
 resource "aws_ecs_cluster" "w6-ecs-cluster" {
-  # name =
+  name = "w6-cluster"
 }
 
 /*

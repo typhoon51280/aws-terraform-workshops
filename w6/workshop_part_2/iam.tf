@@ -2,7 +2,7 @@
 
 resource "aws_iam_instance_profile" "w6-instance-profile" {
   # name =
-  roles = [ aws_iam_role.w6-role.name ]
+  role = aws_iam_role.w6-role.name
 }
 
 resource "aws_iam_role" "w6-role" {
