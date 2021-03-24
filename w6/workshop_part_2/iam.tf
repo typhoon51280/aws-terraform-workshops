@@ -50,6 +50,7 @@ resource "aws_iam_role_policy" "s3-policy" {
     "Action": [
       "elasticloadbalancing:*",
       "autoscaling:DescribeAutoScalingGroups",
+      "",
       "ecs:*",
       "logs:*"
     ],
