@@ -2,13 +2,13 @@ console.log("Starting AWS Lambda function.");
 var aws = require('aws-sdk');
  
 exports.handler = function(event, context) {
-  var ecsService = '${ecs_service_name}';
+  var ecsService = process.env.ecs_service_name;
 
-  var ecsRegion = 'us-east-1';
-  var ecsCluster = '${ecs_cluster_name}';
+  var ecsRegion = 'eu-west-1';
+  var ecsCluster = process.env.ecs_cluster_name;
   var ecs = new aws.ECS({region: ecsRegion});
   var autoscaling = new aws.AutoScaling();
-  var asg_name = '${asg_name}';
+  var asg_name = process.env.asg_name;
   
   var context_event_message = event.Records[0].Sns.Message;
   console.log('ASG Scale Event: ' + context_event_message);

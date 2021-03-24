@@ -3,7 +3,7 @@
 resource "aws_lambda_function" "ecs_autoscale_lambda" {
   function_name = "w6-lambda"
 
-  filename = "files/ecs_autoscale_lambda.zip"
+  filename = data.archive_file.lambda_code.output_path
   role = aws_iam_role.w6-role.arn
   runtime = "nodejs14.x"
   timeout = "8"
@@ -34,3 +34,8 @@ resource "aws_sns_topic_subscription" "scale_sns_events" {
   endpoint  = aws_lambda_function.ecs_autoscale_lambda.arn
 }
 
+data "archive_file" "lambda_code" {
+  type        = "zip"
+  source_file = "${path.module}/files/lambda_ecs_autoscale.js"
+  output_path = "${path.module}/files/terraform_lambda.zip"
+}
