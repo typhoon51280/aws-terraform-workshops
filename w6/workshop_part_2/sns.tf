@@ -1,7 +1,7 @@
 # Uncomment and add missing arguments here. Keep rest configuration as is.
 
 resource "aws_sns_topic" "scale_notifications" {
-  name_name_prefix = "w6-"
+  name_prefix = "w6-"
 }
 
 resource "aws_autoscaling_notification" "ecs_asg_up_notifications" {
