@@ -21,8 +21,7 @@ resource "aws_autoscaling_group" "autoscaling_group" {
   default_cooldown = 60
 
   # Keep below arguments
-  availability_zones = ""
-  vpc_zone_identifier = ""
+  vpc_zone_identifier = [ var.subnet_id ]
 
   tag {
     key = "Name"
