@@ -9,8 +9,3 @@ variable "availability_zone_id" {
 variable "subnet_id" {
   description = "Subnet for EC2 instances."
 }
-
-variable "ec2_tag_name" {
-  description = "Tag Name for EC2 instances."
-  default = "workshop-3"
-}

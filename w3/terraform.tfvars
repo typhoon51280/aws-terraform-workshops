@@ -1,4 +1,3 @@
-vpc_id = "vpc-07ca107e"
-subnet_id = "subnet-8b9682ed"
+vpc_id = "vpc-1111111"
+subnet_id = "subnet-1111111"
 availability_zone_id = "eu-west-1c"
-ec2_tag_name = "workshop3"
