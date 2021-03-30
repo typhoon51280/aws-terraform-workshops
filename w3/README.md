@@ -26,6 +26,7 @@
 
     3.3. Apply terraform configuration
     ```
+    $ terraform init
     $ terraform plan
     $ terraform apply
     ```
@@ -72,9 +73,10 @@
     $ terraform apply
     ```
   
-    5.3. Go to AWS SNS web console, find newly created SNS topic and create subscription to your email address.
+    5.3. Go to AWS SNS web console, find newly created SNS topic and create subscription to your email address (be sure to confirm subscription through link sent by email)
   
-    5.4. Update ASG configuration to send its scaling events to SNS topic
+    5.4. Update ASG configuration in `autoscaling.tf` to send its scaling events to SNS topic:
+    - uncomment "autoscaling_notification"
   
     5.5. Apply terraform configuration
     ```

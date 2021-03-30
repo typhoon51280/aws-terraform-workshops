@@ -1,7 +1,7 @@
 # Add missing arguments according to terraform/aws documentation.
 # Docs: https://www.terraform.io/docs/providers/aws/r/elb.html
 resource "aws_elb" "workshop_elb" {
-  security_groups = [ ]
+  security_groups = [ aws_security_group.workshop_security_group.id ]
   connection_draining = true
 
   listener {
