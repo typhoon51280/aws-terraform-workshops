@@ -1,29 +1,7 @@
-/*
 # Uncomment and specify resource arguments below according to documentation and workshop guide:
 # https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html
-resource "aws_cloudwatch_metric_alarm" "cpu_high_alarm" {
-  alarm_name = 
-  alarm_description = "This alarm triggers when CPU load in Autoscaling group is high."
- 
-  metric_name =
-  namespace = "AWS/EC2"
-  dimensions {
-    # Put proper dimensions here
-  }
-  statistic = "Average"
 
-  comparison_operator = "GreaterThanOrEqualToThreshold"
-  evaluation_periods = "1"
-  
-  period =
-  threshold =
-  
-  # Use autoscaling policy ARN as an alarm action here
-  # Reference: http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
-  alarm_actions = [ ]
-}
-*/
-
+/*
 resource "aws_cloudwatch_metric_alarm" "cpu_high_alarm" {
   alarm_name = "w2-alarm-cpu-high"
   alarm_description = "This alarm triggers when CPU load in Autoscaling group is high."
@@ -38,17 +16,18 @@ resource "aws_cloudwatch_metric_alarm" "cpu_high_alarm" {
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods = "1"
   
-  period = 60
-  threshold = 40
+  period = 
+  threshold = 
   
   # Use autoscaling policy ARN as an alarm action here
   # Reference: http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
   alarm_actions = [
-    aws_autoscaling_policy.autoscale_group_policy_up_x1.arn
+    
   ]
 }
+*/
 
-
+/*
 resource "aws_cloudwatch_metric_alarm" "log_high_alarm" {
   alarm_name = "w2-alarm-cpu-low"
   alarm_description = "This alarm triggers when CPU load in Autoscaling group is low."
@@ -63,12 +42,13 @@ resource "aws_cloudwatch_metric_alarm" "log_high_alarm" {
   comparison_operator = "LessThanOrEqualToThreshold"
   evaluation_periods = "1"
 
-  period = 60
-  threshold = 35
+  period = 
+  threshold = 
 
   # Use autoscaling policy ARN as an alarm action here
   # Reference: http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
   alarm_actions = [
-    aws_autoscaling_policy.autoscale_group_policy_down_x1.arn
+    
   ]
 }
+*/
