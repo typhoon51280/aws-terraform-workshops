@@ -61,10 +61,11 @@ resource "aws_instance" "w1-instance" {
   # 4. Specify Security group for this instance (use one that we create above).
   # Docs: https://www.terraform.io/docs/providers/aws/r/instance.html
 
-  # if subnet_id is not specified it will be used the default one in the availability zone specified
+  # if subnet_id is not specified it will be used the default one
   subnet_id = ""
   
-  availability_zone = "eu-west-1a"
+  # if availability_zone is not specified it will be used the default one
+  availability_zone = ""
 
   instance_type               = ""
   vpc_security_group_ids      = []
