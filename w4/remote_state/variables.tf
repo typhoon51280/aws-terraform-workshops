@@ -1,3 +1,4 @@
-variable "s3_bucket_name" {
-  description = "S3 bucket name"
+variable "s3_bucket_prefix" {
+  description = "S3 bucket name prefix"
+  default = "workshop4-remote-"
 }

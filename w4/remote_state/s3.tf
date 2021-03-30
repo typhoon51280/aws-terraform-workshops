@@ -2,7 +2,6 @@
 # Make sure that versioning is enabled for bucket
 
 resource "aws_s3_bucket" "tf-remote-state-bucket" {
-  bucket = var.s3_bucket_name
   acl = "private"
   versioning {
     enabled = true

@@ -2,12 +2,10 @@
 # can be kept as is.
 
 resource "aws_iam_instance_profile" "w4-profile" {
-  name = "tf-w4-profile"
   role = aws_iam_role.w4-role.name
 }
 
 resource "aws_iam_role" "w4-role" {
-  name = "tf-w4-role"
   assume_role_policy = <<EOF
 {
   "Version": "2008-10-17",

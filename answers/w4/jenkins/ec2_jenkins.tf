@@ -2,28 +2,24 @@
 # This instance will run Jenkins server, consider this when configuring it.
 resource "aws_instance" "jenkins_ec2_instance" {
 
-  availability_zone = "${var.availability_zone_id}"
-  vpc_security_group_ids = ["${aws_security_group.w4-jenkins.id}"]
-  subnet_id = "${var.subnet_id}"
+  # Specify missing arguments here
 
-  tags {
-    Name = "jenkins-w4"
+  vpc_security_group_ids = [ aws_security_group.w4-jenkins.id ]
+  subnet_id = var.subnet_id
+  iam_instance_profile = aws_iam_instance_profile.w4-profile.name
+
+  tags = {
+    Name = "workshop4"
   }
 
-  user_data = "${template_file.user_data_template.rendered}"
+  user_data = templatefile("files/user-data.txt.tmpl", {
+    s3_bucket_name = aws_s3_bucket.bootstrap_scripts.bucket
+  })
 
   # Keep these arguments as is:
-  ami = "ami-cb2305a1"
-  instance_type = "t2.medium"
-  associate_public_ip_address = false
-  iam_instance_profile = "${aws_iam_instance_profile.w4-profile.name}"
-  depends_on = ["aws_s3_bucket_object.jenkins_bootstrap_script"]
-}
-
-resource "template_file" "user_data_template" {
-  template = "${file("files/user-data.txt.tmpl")}"
-
-  vars {
-    s3_bucket_name = "${aws_s3_bucket.bootstrap_scripts.bucket}"
-  }
+  ami = data.aws_ami.amazon_linux_2.id
+  instance_type = "t2.micro"
+  associate_public_ip_address = true
+  key_name = aws_key_pair.ec2_key.key_name
+  depends_on = [ aws_s3_bucket_object.jenkins_bootstrap_script ]
 }

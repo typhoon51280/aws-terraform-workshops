@@ -3,10 +3,9 @@
 # 3. Create outbound rule in security group to allow outgoing connections from instance via any ports/protocols.
 
 resource "aws_security_group" "w4-jenkins" {
-  name = "w4-jenkins"
-  vpc_id = "${var.vpc_id}"
 
-  # Egress access
+  vpc_id = var.vpc_id
+
   egress {
     from_port = 0
     to_port = 0
