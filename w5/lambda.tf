@@ -5,10 +5,10 @@ resource "aws_lambda_function" "scheduled_lambda_function" {
   role = aws_iam_role.w5.arn
   timeout = 8
 
-  # vpc_config {
-  #   subnet_ids = [ var.subnet_id ]
-  #   security_group_ids = [ aws_security_group.w5.id ]
-  # }
+  vpc_config {
+    subnet_ids = [ var.subnet_id ]
+    security_group_ids = [ aws_security_group.w5.id ]
+  }
 
   # Keep these arguments as is:
   runtime = "python2.7"

@@ -11,7 +11,7 @@ resource "aws_autoscaling_group" "w5" {
   max_size = 1
   tag {
     key = "Name"
-    value = var.ec2_tag_name
+    value = "workshop5"
     propagate_at_launch = true
   }
 }
