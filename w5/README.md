@@ -23,35 +23,40 @@
 
     2.5. Make sure ELB DNS name can be opened with browser -- it should show nginx welcome page.
 
-3. Create SNS topic, subscribe your email to it.
+3. Create Lambda function for monitoring nginx behind ELB, it will send the results to SNS (and to your mailbox).
 
-4. Create Lambda function for monitoring nginx behind ELB, it will send the results to SNS (and to your mailbox).
+    3.1. Finish incomplete terraform configuration `lambda.tf` to create Lambda function triggered by CloudWatch events every 5 minutes.
 
-    4.1. Finish incomplete terraform configuration to create Lambda function triggered by CloudWatch events every 5 minutes.
+    3.2. Finish incomplete terraform configuration `sns.tf` to create SNS topic.
 
-    4.2. Apply terraform configuration:
+    3.3. Apply terraform configuration:
     ```
     $ terraform plan
     $ terraform apply
     ```
 
-    4.3. Go to AWS Lambda console and change check URL and SNS in Lambda function’s code:
+    3.4. Subscribe your email to the topic created.
+
+    3.5. Go to AWS Lambda console and change check URL and SNS in Lambda function’s code:
 
     > **Note:** *Make sure you specified actual DNS name of your ELB (**lb_public**)*
 
-    4.4. Try to trigger Lambda function in console manually
+    3.6. Try to trigger Lambda function in console manually
 
-    4.5. Check lambda function execution logs in CloudWatch.
+    3.7. Check lambda function execution logs in CloudWatch.
 
-5. Simulate service outage by stopping nginx at instance in ASG.
+4. Simulate service outage by stopping nginx at instance in ASG.
 
-    5.1. Go to instance via SSH and run ‘sudo service docker stop’ command to shutdown container with nginx.
+    4.1. Login to ec2 instances via SSH and stop docker to shutdown container with nginx:
+    ```
+    sudo systemctl stop docker
+    ```
 
-    5.2. Check that ELB doesn’t show nginx welcome page in browser anymore.
+    4.2. Check that ELB doesn’t show nginx welcome page in browser anymore.
 
-    5.3. Wait until Lambda function is executed by Cloudwatch schedule. Make sure your received email about failed web check to your mailbox.
+    4.3. Wait until Lambda function is executed by Cloudwatch schedule. Make sure your received email about failed web check to your mailbox.
 
-6. Destroy AWS resources:
+5. Destroy AWS resources:
     ```
     $ terraform destroy
     ```
