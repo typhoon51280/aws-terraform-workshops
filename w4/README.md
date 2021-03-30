@@ -33,7 +33,7 @@
 
     3.3. Define missing resources in terraform configuration according to comments ***.tf** files
   
-    3.4. terraform plan and apply
+    3.4. Apply terraform configuration:
     ```
     $ terraform plan
     $ terraform apply

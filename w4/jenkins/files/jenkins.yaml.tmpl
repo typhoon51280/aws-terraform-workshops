@@ -24,19 +24,12 @@ jobs:
   - script: >
       pipelineJob('testjobs/demo') {
         definition {
-          cps {
-            script("""\
-              pipeline {
-                agent any
-                stages {
-                  stage ('test') {
-                    steps {
-                      echo "hello world"
-                    }
-                  }
-                }
-              }""".stripIndent())
-              sandbox()
+          cpsScm {
+            scm {
+              github('typhoon51280/aws-terraform-workshops')
+            }
+            lightweight()
+            scriptPath('w4/jenkins/files/Jenkinsfile)
           }
         }
       }
