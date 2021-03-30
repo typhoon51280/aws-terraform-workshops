@@ -10,9 +10,9 @@
     $ cd aws-terraform-workshops/w1
     ```
 
-2. Configure Terraform with AWS credentials (see pre-requisites) with profile = "test" but if you encounter problems with the aws cli configuration you can fill in the `providers.tf` configuration file with your credentials (not best practice):
+2. Configure Terraform with AWS credentials (see pre-requisites) with profile = "test" but if you encounter problems with the aws cli configuration you can edit the configuration file `providers.tf` with your credentials (***NOT** best practice*):
     ```
-    $ cat creds.tf
+    $ cat providers.tf
     provider "aws" {
     access_key = "THISISEXAMPLETHISISEXAMPLE"
     secret_key = "THISISEXAMPLE/kToJ5qUtCpxr/THISISEXAMPLE"
