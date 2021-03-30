@@ -1,8 +1,8 @@
-## This directory contains terraform configuration for Smartling AWS/Terraform workshop #1 covered in blog posts at [Getting started with Terraform and AWS EC2, first steps. Workshop #1](https://tech.smartling.com/getting-started-with-terraform-and-aws-ec2-first-steps-workshop-1-e38607f0fd4c)
+## This directory contains terraform configuration for Smartling AWS/Terraform workshop #1 covered in blog post at [Getting started with Terraform and AWS EC2, first steps. Workshop #1](https://tech.smartling.com/getting-started-with-terraform-and-aws-ec2-first-steps-workshop-1-e38607f0fd4c)
 
 ---
 
-### **Follow the instructions:**
+### **Hands on:**
 
 1. Clone git repository with workshop data, go to w1 directory:
     ```
