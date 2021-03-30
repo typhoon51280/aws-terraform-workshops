@@ -1,7 +1,7 @@
 # Specify missing arguments according to documentation:
 # https://www.terraform.io/docs/providers/aws/r/launch_configuration.html
 resource "aws_launch_configuration" "launch_configuration" {
-  security_groups = [aws_security_group.w2_security_group.id]
+  security_groups = []
   user_data = file("../shared/user-data.txt")
 
   # Keep below arguments 
@@ -16,8 +16,8 @@ resource "aws_launch_configuration" "launch_configuration" {
 # https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html
 resource "aws_autoscaling_group" "autoscaling_group" {
   min_size = 1
-  max_size = 3
-  launch_configuration = ""
+  max_size = 1
+  launch_configuration = aws_launch_configuration.launch_configuration.name
   default_cooldown = 60
 
   # Keep below arguments
