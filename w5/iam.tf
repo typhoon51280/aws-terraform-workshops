@@ -3,6 +3,7 @@
 # Specify missing or incomplete arguments according to documentation:
 # Docs: https://www.terraform.io/docs/providers/aws/r/iam_role.html
 
+/*
 resource "aws_iam_role" "w5" {
   assume_role_policy = <<EOF
 {
@@ -57,3 +58,4 @@ resource "aws_iam_role_policy" "w5" {
 }
 EOF
 }
+*/
