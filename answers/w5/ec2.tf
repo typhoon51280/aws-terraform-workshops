@@ -35,5 +35,5 @@ resource "aws_security_group" "w5" {
     cidr_blocks = [ "0.0.0.0/0" ]
   }
 
-  vpc_id = "${var.vpc_id}"
+  vpc_id = var.vpc_id
 }

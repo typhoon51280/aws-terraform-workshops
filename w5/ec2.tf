@@ -5,8 +5,6 @@ resource "aws_security_group" "w5" {
 
   # This rule allows incoming connections via tcp/80
   ingress {
-    from_port = 80
-    to_port = 80
     protocol = "tcp"
     cidr_blocks = [ "0.0.0.0/0" ]
   }
@@ -29,8 +27,6 @@ resource "aws_security_group" "w5" {
 
   # Access to Internet for instance
   egress {
-    from_port = 0
-    to_port = 0
     protocol = "-1"
     cidr_blocks = [ "0.0.0.0/0" ]
   }

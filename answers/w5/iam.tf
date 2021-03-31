@@ -3,7 +3,6 @@
 # Specify missing or incomplete arguments according to documentation:
 # Docs: https://www.terraform.io/docs/providers/aws/r/iam_role.html
 resource "aws_iam_role" "w5" {
-  name = "tf-w5-role"
   assume_role_policy = <<EOF
 {
   "Version": "2008-10-17",
@@ -22,8 +21,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "w5" {
-  name = "tf-w5-policy"
-  role = "${aws_iam_role.w5.name}"
+  role = aws_iam_role.w5.name
   policy = <<EOF
 {
   "Statement": [
@@ -47,9 +45,15 @@ resource "aws_iam_role_policy" "w5" {
        "ec2:*"
      ],
      "Resource": "*"
+   },
+   {
+     "Effect": "Allow",
+     "Action": [
+       "events:*"
+     ],
+     "Resource": "arn:aws:events:*:*:*"
    }
   ]
 }
 EOF
 }
-

@@ -2,6 +2,7 @@
 
 # Specify missing or incomplete arguments according to documentation:
 # Docs: https://www.terraform.io/docs/providers/aws/r/iam_role.html
+
 resource "aws_iam_role" "w5" {
   assume_role_policy = <<EOF
 {
@@ -21,7 +22,6 @@ EOF
 }
 
 resource "aws_iam_role_policy" "w5" {
-  role = aws_iam_role.w5.name
   policy = <<EOF
 {
   "Statement": [

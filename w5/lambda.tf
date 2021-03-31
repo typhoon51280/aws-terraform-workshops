@@ -1,8 +1,9 @@
 # Specify missing or incomplete arguments according to documentation:
 # Docs: https://www.terraform.io/docs/providers/aws/r/lambda_function.html
+
+/*
 resource "aws_lambda_function" "scheduled_lambda_function" {
   function_name = "tf-w5"
-  role = aws_iam_role.w5.arn
   timeout = 8
 
   # Keep these arguments as is:
@@ -15,7 +16,6 @@ resource "aws_lambda_function" "scheduled_lambda_function" {
 # Docs: https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_rule.html
 resource "aws_cloudwatch_event_rule" "scheduled_lambda_schedule" {
   schedule_expression = "rate(5 minutes)"
-  # name = 
   description = "CloudWatch Events Schedule to trigger Lambda function."
   is_enabled = true
 }
@@ -38,3 +38,4 @@ resource "aws_lambda_permission" "scheduled_lambda_cloudwatch_permission" {
   principal = "events.amazonaws.com"
   source_arn = aws_cloudwatch_event_rule.scheduled_lambda_schedule.arn
 }
+*/

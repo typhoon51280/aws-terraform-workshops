@@ -86,6 +86,7 @@
   
     5.6. Login to one of ec2 instances via SSH and stop docker:
     ```
+    ssh -i id_rsa ec2-user@<ec2_public_dns>
     sudo systemctl stop docker
     ```
     

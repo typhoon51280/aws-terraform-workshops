@@ -1,8 +1,7 @@
 # Add missing arguments according to terraform/aws documentation.
 # Docs: https://www.terraform.io/docs/providers/aws/r/elb.html
 resource "aws_elb" "w5" {
-  name = "tf-w5-elb"
-  security_groups = [ "${aws_security_group.w5.id}" ]
+  security_groups = [ aws_security_group.w5.id ]
 
   listener {
     instance_port = 80
@@ -19,6 +18,6 @@ resource "aws_elb" "w5" {
     interval = 5
   }
 
-  subnets = [ "${var.subnet_id}" ]
-  internal = true
+  subnets = [ var.subnet_id ]
+  internal = false
 }
