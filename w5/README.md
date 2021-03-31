@@ -37,7 +37,7 @@
 
     3.4. Subscribe your email to the topic created.
 
-    3.5. Go to AWS Lambda console and change check URL and SNS in Lambda function’s code:
+    3.5. Go to AWS Lambda console and change **check URL** and **SNS topic** in Lambda function’s code:
 
     > **Note:** *Make sure you specified actual DNS name of your ELB (**lb_public**)* and arn of the topic (**sns_topic**).
 
