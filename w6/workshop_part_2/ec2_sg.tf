@@ -1,4 +1,4 @@
-# Uncomment and add missing arguments here (if necessary). Keep rest configuration as is.
+# keep as is.
 
 resource "aws_security_group" "w6-sg" {
   description = "W6 security group for ELB and EC2 instances."

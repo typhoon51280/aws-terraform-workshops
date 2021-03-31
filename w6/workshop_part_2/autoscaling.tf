@@ -1,11 +1,10 @@
-# Uncomment and add missing arguments here. Keep rest configuration as is.
+# keep as is.
 
 resource "aws_autoscaling_group" "w6-asg" {
   # name =
   launch_configuration = aws_launch_configuration.w6-lc.name
   load_balancers = [ aws_elb.w6-elb.name ]
 
-  # availability_zones = [ var.availability_zone_id ]
   vpc_zone_identifier = [ var.subnet_id ]
   lifecycle { create_before_destroy = true }
   min_size = 1

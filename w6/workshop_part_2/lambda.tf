@@ -1,5 +1,5 @@
 # Uncomment and add missing arguments here. Keep rest configuration as is.
-
+/*
 resource "aws_lambda_function" "ecs_autoscale_lambda" {
   function_name = "w6-lambda"
 
@@ -39,3 +39,4 @@ data "archive_file" "lambda_code" {
   source_file = "${path.module}/files/lambda_ecs_autoscale.js"
   output_path = "${path.module}/files/terraform_lambda.zip"
 }
+*/

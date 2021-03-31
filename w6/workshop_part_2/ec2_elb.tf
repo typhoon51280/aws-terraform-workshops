@@ -1,7 +1,6 @@
-# Uncomment and add missing arguments here. Keep rest configuration as is.
+# keep as is.
 
 resource "aws_elb" "w6-elb" {
-  # name = ""
   security_groups = [ aws_security_group.w6-sg.id ]
 
   listener {

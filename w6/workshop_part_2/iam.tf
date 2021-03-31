@@ -1,4 +1,4 @@
-# Uncomment and add missing arguments here. Keep rest configuration as is.
+# keep as is.
 
 resource "aws_iam_instance_profile" "w6-instance-profile" {
   role = aws_iam_role.w6-role.name

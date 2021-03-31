@@ -3,7 +3,7 @@ resource "aws_ecs_cluster" "w6-ecs-cluster" {
   name = "w6-cluster"
 }
 
-
+/*
 # Docs: https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html
 resource "aws_ecs_task_definition" "w6-task-def" {
   family = "w6-task-def"
@@ -33,3 +33,4 @@ resource "aws_ecs_service" "w6-ecs-service" {
     ignore_changes = [ desired_count ]
   }
 }
+*/

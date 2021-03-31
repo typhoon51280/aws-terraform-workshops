@@ -37,7 +37,7 @@
 
     > **Note:** *Credentials for Terraform are not required for these steps as “terraform apply” will be executed on EC2 instance which has full access to AWS.*
 
-    2.1. Go to w6/workshop_part_2 directory at newly created EC2 instance and configure terraform to create ECS cluster. You may use vim, nano or pico command line text editors.
+    2.1. Go to w6/workshop_part_2 directory at newly created EC2 instance and configure terraform to create ECS cluster. You may use vim, nano or mcedit command line text editors.
 
     2.2. Apply terraform configuration:
     ```
