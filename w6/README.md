@@ -10,23 +10,27 @@
     > **Note:** *there are no intentional mistakes or confusions at this step. But next sections in this workshop still contain some so you'll need to fix them.*
 
     1.1. Go to w6/workshop_part_1 directory in cloned aws-terraform-workshops git repository.
+    
+    1.2. Specify actual IDs of **AWS VPC**, **Subnet** and **Availability Zone** into `terraform.tfvars` file.
 
-    1.2. Configure terraform to create IAM role, security group and EC2 instance.
+    > **Note**: *Follow instructions in Hands On section of Workshop #2 or just copy values from it.*
 
-    1.3. Make sure that user data for EC2 instance contains your SSH key.
+    1.3. Configure terraform to create IAM role, security group and EC2 instance.
 
-    1.4. Apply terraform configuration:
+    1.4. Make sure that user data for EC2 instance contains your SSH key.
+
+    1.5. Apply terraform configuration:
     ```
     $ terraform plan
     $ terraform apply
     ```
 
-    1.5. Login to newly created EC2 instance via SSH (retrieve `<ec-public>` from terraform output).
+    1.6. Login to newly created EC2 instance via SSH (retrieve `<ec-public>` from terraform output).
     ```
     $ ssh -i id_rsa ec2-user@<ec2_public>
     ```
 
-    1.6. Checkout git repository with terraform workshops.
+    1.7. Checkout git repository with terraform workshops.
     ```
     $ git clone https://github.com/typhoon51280/aws-terraform-workshops
     $ cd aws-terraform-workshops/w6/workshop_part_2
@@ -37,7 +41,11 @@
 
     > **Note:** *Credentials for Terraform are not required for these steps as “terraform apply” will be executed on EC2 instance which has full access to AWS.*
 
-    2.1. Go to w6/workshop_part_2 directory at newly created EC2 instance and configure terraform to create ECS cluster. You may use vim, nano or mcedit command line text editors.
+    2.1. Go to w6/workshop_part_2 directory at newly created EC2 instance and configure terraform to create ECS cluster (you may use **vim**, **nano** or **mcedit** command line text editors). 
+    
+    2.2. Edit only `terraform.tfvars` (for now) and keep the rest of configuration as is (specify actual IDs of **AWS VPC**, **Subnet** and **Availability Zone** into `terraform.tfvars` file).
+
+    > **Note**: *Follow instructions in Hands On section of Workshop #2 or just copy values from it.*
 
     2.2. Apply terraform configuration:
     ```
@@ -55,16 +63,19 @@
 3. **Create ECS service** with ELB attached to it.
 
     3.1. Configure terraform to create sample ECS service with ELB (*notice ignore_changes configuration in ECS service definition*).
+
+    3.2. Edit terraform configurations: `ecs.tf`
+    - uncomment task definition and service and add missing arguments 
     
-    3.2. Apply terraform configuration:
+    3.3. Apply terraform configuration:
     ```
     $ terraform plan
     $ terraform apply
     ```
 
-    3.3. Use ELB DNS name to open sample service in browser: check events for ECS service in AWS web console to see why tasks aren’t starting at container instance.
+    3.4. Use ELB DNS name to open sample service in browser: check events for ECS service in AWS web console to see why tasks aren’t starting at container instance.
 
-    3.4. Adjust terraform configuration and apply it to fix the issue.
+    3.5. Adjust terraform configuration and apply it to fix the issue.
 
 4. Initiate **deployment to ECS service**.
 
@@ -83,19 +94,25 @@
 
     5.1. Configure terraform to bind SNS topic used by ASG to send notifications to trigger Lambda function.
 
-    5.2. Apply Terraform configuration.
+    5.2. Uncomment resource in `lambda.tf` and `sns.tf` (*fixing errors*) and apply terraform configuration:
     ```
     $ terraform plan
     $ terraform apply
     ```
 
-    5.3. Uncomment resource in lambda.tf and apply terraform configuration.
+    5.3. Change min_size = max_size = 2 in ASG configuration file `autoscaling.tf` and apply configuration:
+    ```
+    $ terraform plan
+    $ terraform apply
+    ```
 
-    5.4. Change min_size = max_size = 2 in ASG configuration.
+    5.4. Check Lambda function’s logs and ECS service desired count value in web console (you should see desired_count = 2 here applied by Lambda).
 
-    5.5. Check Lambda function’s logs and ECS service desired count value in web console (you should see desired_count = 2 here applied by Lambda).
-
-    5.6. Change min_size = max_size = 1 in ASG configuration.
+    5.5. Change min_size = max_size = 1 in ASG configuration file `autoscaling.tf` and apply configuration:
+    ```
+    $ terraform plan
+    $ terraform apply
+    ```
 
 6. **Destroy AWS resources** created in this workshop.
     > **Note:** *Order is extremely important here — run Terraform destroy at EC2 instance first, then locally.*

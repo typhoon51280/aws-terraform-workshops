@@ -2,6 +2,7 @@
 resource "aws_ecs_cluster" "w6-ecs-cluster" {
   name = "w6-cluster"
 }
+# Uncomment and add missing arguments here. Keep rest configuration as is.
 /*
 # Docs: https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html
 resource "aws_ecs_task_definition" "w6-task-def" {
@@ -13,7 +14,7 @@ resource "aws_ecs_task_definition" "w6-task-def" {
 resource "aws_ecs_service" "w6-ecs-service" {
   name = "w6-service"
 
-  cluster = aws_ecs_cluster.w6-ecs-cluster.id
+  cluster = 
   task_definition = aws_ecs_task_definition.w6-task-def.arn
 
   desired_count = 1

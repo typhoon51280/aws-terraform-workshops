@@ -7,9 +7,13 @@
 
 1. Go to w5 directory in cloned aws-terraform-workshops git repository.
 
+    1.1. Specify actual IDs of **AWS VPC**, **Subnet** and **Availability Zone** into `terraform.tfvars` file.
+
+    > **Notes**: *Follow instructions in Hands On section of Workshop #2 or just copy values from it.*
+
 2. **Create Autoscaling group** (ASG), attach ELB to ASG (`ec2.tf`,`elb.tf`,`autoscaling.tf`):
 
-    2.1. Finish incomplete terraform configuration and be prepared to *fix mistakes*.
+    2.1. Finish incomplete terraform configuration and be prepared to *fix mistakes*
   
     2.2. Attach ELB to ASG (do not enable ELB checks for ASG, keep default EC2).
 

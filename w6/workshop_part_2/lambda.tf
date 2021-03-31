@@ -4,7 +4,7 @@ resource "aws_lambda_function" "ecs_autoscale_lambda" {
   function_name = "w6-lambda"
 
   filename = data.archive_file.lambda_code.output_path
-  role = aws_iam_role.w6-role.arn
+  role = 
   runtime = "nodejs14.x"
   timeout = "8"
   handler = "lambda_ecs_autoscale.handler"
@@ -29,7 +29,7 @@ resource "aws_lambda_permission" "ecs_autoscale_lambda_sns_permission" {
 
 # AWS Lambda is subsribed to SNS topic so events that come to it will be processed by Lambda.
 resource "aws_sns_topic_subscription" "scale_sns_events" {
-  topic_arn = aws_sns_topic.scale_notifications.arn
+  topic_arn = 
   protocol = "lambda"
   endpoint  = aws_lambda_function.ecs_autoscale_lambda.arn
 }
