@@ -1,8 +1,8 @@
 [
    {
 	"name": "webservice",
-	"image": "anosulchik/workshop-sample-application:v1.0",
-	"memory": 4096,
+	"image": "anosulchik/workshop-sample-application:v2.0",
+	"memory": 100,
 	"portMappings": [{
 		"hostPort": 80,
 		"containerPort": 80,
